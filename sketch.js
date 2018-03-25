@@ -124,14 +124,6 @@ Menu.prototype.render = function(idx=1) {
     stroke(this.c.r*0.5*this.hl, this.c.g*0.5*this.hl, this.c.b*0.5*this.hl)
     fill(this.c.r*0.2*this.hl, this.c.g*0.2*this.hl, this.c.b*0.2*this.hl)
 
-    // if (this.open && !this.wasOpen) {
-    //     this.pos.x += (OPTION_WIDTH*this.depth)
-    //     this.pos.y += (OPTION_HEIGHT*idx)
-    // }
-    // if (!this.open && this.wasOpen) {
-    //     this.pos.x -= (OPTION_WIDTH*this.depth)
-    //     this.pos.y -= (OPTION_HEIGHT*idx)
-    // }
     rect(this.pos.x, this.pos.y, this.w, this.h)
 
     // Draw self text
@@ -139,50 +131,9 @@ Menu.prototype.render = function(idx=1) {
     fill(this.c.r, this.c.g, this.c.b)
     textSize(24)
     text(this.text, this.pos.x + 6, this.pos.y + (OPTION_HEIGHT - 17))
-
-    // // Draw children
-    // for (var i = 0; i < this.children.length; i++) {
-    //     var child = this.children[i]
-    //     var yOff = this.pos.y + (OPTION_HEIGHT*(i+1))
-        
-    //     var r = child.c.r*child.hl
-    //     var g = child.c.g*child.hl
-    //     var b = child.c.b*child.hl
-
-    //     if (child.open) {
-    //         stroke(r, g, b)
-    //     } else {
-    //         noStroke()
-    //     }
-
-    //     // Option box
-    //     fill(r*0.2, g*0.2, b*0.2)
-    //     rect(this.pos.x, this.pos.y+yOff, this.w, OPTION_HEIGHT)
-        
-    //     // Option text
-    //     noStroke()
-    //     fill(r, g, b)
-    //     textSize(24)
-    //     text(child.text, this.pos.x + 6, this.pos.y + yOff + (OPTION_HEIGHT/2))
-    // }
-    
-    // this.wasOpen = this.open
 }
 
 Menu.prototype.clicked = function(x, y) {
-    // for (var i = 0; i < this.children.length; i++) {
-    //     var menu = this.children[i]
-    //     var oX = this.pos.x
-    //     var oY = this.pos.y+(OPTION_HEIGHT*(i+1))
-    //     menu.open = false
-    //     if (pointInRect(x, y, oX, oY, OPTION_WIDTH, OPTION_HEIGHT)) {
-    //         if (menu.wasOpen) {
-    //             menu.open = false
-    //         } else {
-    //             menu.open = true
-    //         }
-    //     }
-    // }
     this.open = !this.open
     if (!this.open) {
         for (var i = 0; i < this.children.length; i++) {
