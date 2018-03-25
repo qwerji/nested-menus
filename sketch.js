@@ -130,7 +130,35 @@ Menu.prototype.render = function(idx=1) {
     noStroke()
     fill(this.c.r, this.c.g, this.c.b)
     textSize(24)
-    text(this.text, this.pos.x + 6, this.pos.y + (OPTION_HEIGHT - 17))
+    text(this.text, this.pos.x + 10, this.pos.y + (OPTION_HEIGHT - 17))
+
+    if (this.children.length) {
+        // Draw arrow
+        strokeWeight(3)
+        stroke(this.c.r*0.5*this.hl, this.c.g*0.5*this.hl, this.c.b*0.5*this.hl)
+        
+        var rOff = 15
+        var vOff = rOff + 13
+        if (this.open) {
+            line(this.pos.x + this.w - vOff,
+                this.pos.y + (this.h/2),
+                this.pos.x + this.w - rOff,
+                this.pos.y + (this.h/4))
+            line(this.pos.x + this.w - vOff,
+                this.pos.y + (this.h/2),
+                this.pos.x + this.w - rOff,
+                this.pos.y + ((this.h/4)*3))
+        } else {
+            line(this.pos.x + this.w - rOff,
+                this.pos.y + (this.h/2),
+                this.pos.x + this.w - vOff,
+                this.pos.y + (this.h/4))
+            line(this.pos.x + this.w - rOff,
+                this.pos.y + (this.h/2),
+                this.pos.x + this.w - vOff,
+                this.pos.y + ((this.h/4)*3))
+        }
+    }
 }
 
 Menu.prototype.clicked = function(x, y) {
